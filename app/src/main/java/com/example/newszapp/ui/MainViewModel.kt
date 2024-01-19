@@ -8,8 +8,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newszapp.data.News
-import com.example.newszapp.data.NewsRepository
+import com.example.newszapp.data.NewsApiRepository
+import com.example.newszapp.data.NewsDbRepository
 import kotlinx.coroutines.launch
+
+private const val TAG = "mainViewModel"
 
 class MainViewModel (app: Application) : AndroidViewModel(app) {
     private val _newsList: MutableState<List<News>> = mutableStateOf(emptyList())
@@ -20,30 +23,32 @@ class MainViewModel (app: Application) : AndroidViewModel(app) {
     val news: State<News?>
         get() = _news
 
-    private val newsRepository = NewsRepository(app)
+    private val newsApiRepository = NewsApiRepository()
+    private val newsDbRepository = NewsDbRepository(app)
 
     init {
-        Log.i("mainViewModel", "init")
+        Log.i(TAG, "init")
         getNewsList()
     }
 
     fun getNewsList() {
         viewModelScope.launch {
-            _newsList.value = newsRepository.getNews()
+            val newsList = newsApiRepository.getNews()
+            if (newsList.isNotEmpty()) {
+                newsDbRepository.deleteAllNews()
+                newsDbRepository.storeNewsInDb(newsList)
+            }
+            _newsList.value = newsDbRepository.getAllNewsFromDb()
         }
     }
 
     fun getNewsById(id: Int) {
         viewModelScope.launch {
-            Log.i("mainViewModel", "getNewsById: $id")
+            Log.i(TAG, "getNewsById: $id")
 
-            newsRepository.getNewsById(id)?.let {
-                _news.value = it
-            }
-            //_news.value = newsRepository.getNewsById(id)
-            //Thread.sleep(500)
-            Log.i("mainViewModel", "getNewsById: news: ${_news.value}")
+            _news.value = newsDbRepository.getNewsById(id)
 
+            Log.i(TAG, "getNewsById: news: ${_news.value}")
         }
 
     }
