@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.newszapp.ui.MainViewModel
+import com.example.newszapp.ui.NewsListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsZapp(mainViewModel: MainViewModel) {
+fun NewsZapp(newsListViewModel: NewsListViewModel) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val context = LocalContext.current
     val navController = rememberNavController()
@@ -30,17 +30,13 @@ fun NewsZapp(mainViewModel: MainViewModel) {
                 { navController.navigateUp() })
         },
         bottomBar = {
-            NewsBottomBar(context, currentBackStack?.destination, { mainViewModel.getNewsList() })
+            NewsBottomBar(context, currentBackStack?.destination, { newsListViewModel.getNewsList() })
         }
     ) {
         NewsNavHost(
             navController,
             {
-                mainViewModel.newsList.value
-            },
-            {id ->
-                mainViewModel.getNewsById(id)
-                mainViewModel.news.value
+                newsListViewModel.newsList.value
             },
             Modifier.padding(it))
     }

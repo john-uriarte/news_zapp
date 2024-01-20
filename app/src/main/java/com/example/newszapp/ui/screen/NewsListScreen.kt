@@ -14,6 +14,8 @@ import com.example.newszapp.R
 import com.example.newszapp.data.News
 
 
+private const val TAG = "NewsListScreen"
+
 @Composable
 fun NewsListScreen(getNewsList: () -> List<News>, onClick: (Int) -> Unit) {
     val newsList = getNewsList()
@@ -24,7 +26,7 @@ fun NewsListScreen(getNewsList: () -> List<News>, onClick: (Int) -> Unit) {
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
     )
     LazyColumn() {
-        Log.i("newslist", "items: " + newsList.toString())
+        Log.i(TAG, "items: " + newsList.toString())
         items(newsList) {
             NewsListItem(it.urlToImage, it.title ?: "", it.publishedAt ?: "", it.id, onClick)
         }

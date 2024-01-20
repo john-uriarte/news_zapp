@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Place
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.FloatingActionButton
@@ -20,8 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.newszapp.R
-import com.example.newszapp.data.News
-import com.example.newszapp.ui.MainViewModel
 
 @Composable
 fun NewsBottomBar(

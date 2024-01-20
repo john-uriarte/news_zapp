@@ -19,7 +19,6 @@ enum class NewsDestination {
 fun NewsNavHost(
     navController: NavHostController,
     callGetNewsList: () -> List<News>,
-    callGetNewsById: (Int) -> News?,
     modifier: Modifier = Modifier
 ) {
     NavHost(
@@ -43,9 +42,9 @@ fun NewsNavHost(
                 }
             )
         ) {
-            it.arguments?.let { it1 ->
-                Log.i("NewsNavHost", "call newssinglescreen id: ${it1.getInt("id")}")
-                NewsSingleScreen(callGetNewsById, it1.getInt("id"))
+            it.arguments?.let { param ->
+                Log.i("NewsNavHost", "call NewsSingleScreen id: ${param.getInt("id")}")
+                NewsSingleScreen(param.getInt("id"))
             }
 
         }

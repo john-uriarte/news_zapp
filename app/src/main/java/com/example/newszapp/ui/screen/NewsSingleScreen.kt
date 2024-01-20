@@ -9,15 +9,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.newszapp.data.News
+import com.example.newszapp.ui.NewsSingleViewModel
 
 private const val TAG = "NewsSingleScreen"
 
 @Composable
-fun NewsSingleScreen(callGetNewsById: (Int) -> News?, id: Int) {
+fun NewsSingleScreen(id: Int, vm: NewsSingleViewModel = viewModel()) {
 
-    val news = callGetNewsById(id)
+    vm.getNewsById(id)
+    val news = vm.news.value
     Log.i(TAG, "news: $news")
     Card(modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp)
     ) {
