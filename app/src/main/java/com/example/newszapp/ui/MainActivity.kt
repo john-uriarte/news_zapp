@@ -17,15 +17,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel: NewsListViewModel by viewModels()
-
         setContent {
             NewsZappTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NewsZapp(viewModel)
+                    NewsZapp()
                 }
             }
         }

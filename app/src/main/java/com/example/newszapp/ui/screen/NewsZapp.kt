@@ -15,7 +15,7 @@ import com.example.newszapp.ui.NewsListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsZapp(newsListViewModel: NewsListViewModel) {
+fun NewsZapp() {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val context = LocalContext.current
     val navController = rememberNavController()
@@ -30,14 +30,11 @@ fun NewsZapp(newsListViewModel: NewsListViewModel) {
                 { navController.navigateUp() })
         },
         bottomBar = {
-            NewsBottomBar(context, currentBackStack?.destination, { newsListViewModel.getNewsList() })
+            NewsBottomBar(context, currentBackStack?.destination, {  })
         }
     ) {
         NewsNavHost(
             navController,
-            {
-                newsListViewModel.newsList.value
-            },
             Modifier.padding(it))
     }
 }

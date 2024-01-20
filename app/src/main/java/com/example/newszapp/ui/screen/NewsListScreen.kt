@@ -10,15 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.newszapp.R
 import com.example.newszapp.data.News
+import com.example.newszapp.ui.NewsListViewModel
 
 
 private const val TAG = "NewsListScreen"
 
 @Composable
-fun NewsListScreen(getNewsList: () -> List<News>, onClick: (Int) -> Unit) {
-    val newsList = getNewsList()
+fun NewsListScreen(vm: NewsListViewModel = viewModel(), onClick: (Int) -> Unit) {
+    val newsList = vm.newsList.value
 
     Text(
         text = stringResource(R.string.headlines),

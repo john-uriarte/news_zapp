@@ -18,7 +18,6 @@ enum class NewsDestination {
 @Composable
 fun NewsNavHost(
     navController: NavHostController,
-    callGetNewsList: () -> List<News>,
     modifier: Modifier = Modifier
 ) {
     NavHost(
@@ -28,7 +27,7 @@ fun NewsNavHost(
     ) {
         composable(route = NewsDestination.NEWSLIST.name) {
             Log.i("NewsNavHost", "call NewsListScreen")
-            NewsListScreen(callGetNewsList) { id ->
+            NewsListScreen { id ->
                 navController.navigate(
                     "${NewsDestination.NEWSSINGLE.name}/${id}"
                 )
