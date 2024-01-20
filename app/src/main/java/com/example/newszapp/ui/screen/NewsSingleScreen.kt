@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.example.newszapp.data.News
 import com.example.newszapp.ui.NewsSingleViewModel
 
 private const val TAG = "NewsSingleScreen"
