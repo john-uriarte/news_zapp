@@ -1,6 +1,7 @@
-package com.example.newszapp.data
+package com.example.newszapp.data.network
 
 import android.util.Log
+import com.example.newszapp.data.News
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

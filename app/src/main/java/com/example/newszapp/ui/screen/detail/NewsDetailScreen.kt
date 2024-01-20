@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.detail
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -11,12 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.example.newszapp.ui.NewsSingleViewModel
+import com.example.newszapp.ui.screen.getDateTimeFromUTC
+import com.example.newszapp.ui.viewmodel.NewsDetailViewModel
 
-private const val TAG = "NewsSingleScreen"
+private const val TAG = "NewsDetailScreen"
 
 @Composable
-fun NewsSingleScreen(id: Int, vm: NewsSingleViewModel = viewModel()) {
+fun NewsDetailScreen(id: Int, vm: NewsDetailViewModel = viewModel()) {
 
     vm.getNewsById(id)
     val news = vm.news.value

@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.list
 
 import android.util.Log
 import androidx.compose.foundation.layout.padding
@@ -12,8 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.newszapp.R
-import com.example.newszapp.data.News
-import com.example.newszapp.ui.NewsListViewModel
+import com.example.newszapp.ui.viewmodel.NewsListViewModel
 
 
 private const val TAG = "NewsListScreen"

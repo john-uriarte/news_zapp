@@ -1,8 +1,9 @@
-package com.example.newszapp.data
+package com.example.newszapp.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.newszapp.data.News
 
 @Dao
 interface NewsDao {

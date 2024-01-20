@@ -1,4 +1,4 @@
-package com.example.newszapp.ui
+package com.example.newszapp.ui.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -8,8 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newszapp.data.News
-import com.example.newszapp.data.NewsApiRepository
-import com.example.newszapp.data.NewsDbRepository
+import com.example.newszapp.data.network.NewsApiRepository
+import com.example.newszapp.data.database.NewsDbRepository
 import kotlinx.coroutines.launch
 
 private const val TAG = "mainViewModel"

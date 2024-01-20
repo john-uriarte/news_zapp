@@ -5,7 +5,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.core.app.ApplicationProvider
 import com.example.newszapp.ui.screen.NewsZapp
-import com.example.newszapp.ui.NewsListViewModel
+import com.example.newszapp.ui.viewmodel.NewsListViewModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

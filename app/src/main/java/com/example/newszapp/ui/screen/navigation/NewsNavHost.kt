@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.navigation
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -8,7 +8,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.newszapp.data.News
+import com.example.newszapp.ui.screen.detail.NewsDetailScreen
+import com.example.newszapp.ui.screen.list.NewsListScreen
 
 enum class NewsDestination {
     NEWSLIST,
@@ -42,8 +43,8 @@ fun NewsNavHost(
             )
         ) {
             it.arguments?.let { param ->
-                Log.i("NewsNavHost", "call NewsSingleScreen id: ${param.getInt("id")}")
-                NewsSingleScreen(param.getInt("id"))
+                Log.i("NewsNavHost", "call NewsDetailScreen id: ${param.getInt("id")}")
+                NewsDetailScreen(param.getInt("id"))
             }
 
         }

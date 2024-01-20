@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.appbar
 
 import android.content.Context
 import androidx.compose.foundation.layout.padding
@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.newszapp.R
+import com.example.newszapp.ui.screen.navigation.NewsDestination
+import com.example.newszapp.ui.screen.showToastNotImplemented
 
 @Composable
 fun NewsBottomBar(

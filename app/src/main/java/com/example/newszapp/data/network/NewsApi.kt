@@ -1,5 +1,6 @@
-package com.example.newszapp.data
+package com.example.newszapp.data.network
 
+import com.example.newszapp.data.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

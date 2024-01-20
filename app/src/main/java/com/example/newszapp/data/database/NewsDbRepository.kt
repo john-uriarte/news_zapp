@@ -1,10 +1,10 @@
-package com.example.newszapp.data
+package com.example.newszapp.data.database
 
 import android.app.Application
 import android.util.Log
+import com.example.newszapp.data.News
 
 private const val TAG = "NewsDbRepository"
-
 class NewsDbRepository(app: Application) {
     private val newsDao = NewsDatabase.getDatabase(app)
         .newsDao()

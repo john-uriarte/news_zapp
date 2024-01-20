@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.newszapp.ui.NewsListViewModel
+import com.example.newszapp.ui.screen.appbar.NewsBottomBar
+import com.example.newszapp.ui.screen.appbar.NewsTopBar
+import com.example.newszapp.ui.screen.navigation.NewsNavHost
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

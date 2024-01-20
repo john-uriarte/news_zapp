@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.appbar
 
 import android.content.Context
 import androidx.compose.material.icons.Icons
@@ -16,6 +16,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.newszapp.R
+import com.example.newszapp.ui.screen.navigation.NewsDestination
+import com.example.newszapp.ui.screen.showToastNotImplemented
 
 
 @Composable

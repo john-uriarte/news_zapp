@@ -1,4 +1,4 @@
-package com.example.newszapp.ui.screen
+package com.example.newszapp.ui.screen.list
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.newszapp.ui.screen.getDateTimeFromUTC
 
 
 @RequiresApi(Build.VERSION_CODES.O)
