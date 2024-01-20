@@ -12,7 +12,6 @@ import org.junit.Test
 
 class MainScreenTest {
     val context = ApplicationProvider.getApplicationContext<Context>()
-    val testViewModel = NewsListViewModel(ApplicationProvider.getApplicationContext())
 
     @get:Rule
     val rule = createComposeRule()
@@ -20,7 +19,7 @@ class MainScreenTest {
     @Before
     fun setup() {
         rule.setContent {
-            NewsZapp(testViewModel)
+            NewsZapp()
         }
         Thread.sleep(2000)
     }

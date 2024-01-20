@@ -15,7 +15,6 @@ import coil.compose.AsyncImage
 import com.example.newszapp.ui.screen.getDateTimeFromUTC
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsListItem(
