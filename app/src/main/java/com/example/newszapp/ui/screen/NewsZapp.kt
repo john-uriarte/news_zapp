@@ -36,7 +36,6 @@ fun NewsZapp(mainViewModel: MainViewModel) {
         NewsNavHost(
             navController,
             {
-                mainViewModel.getNewsList()
                 mainViewModel.newsList.value
             },
             {id ->

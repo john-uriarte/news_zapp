@@ -12,11 +12,13 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.newszapp.data.News
 
+private const val TAG = "NewsSingleScreen"
+
 @Composable
 fun NewsSingleScreen(callGetNewsById: (Int) -> News?, id: Int) {
 
     val news = callGetNewsById(id)
-    Log.i("NewsSingleScreen", "news: $news")
+    Log.i(TAG, "news: $news")
     Card(modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp)
     ) {
         Column(modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp)) {
