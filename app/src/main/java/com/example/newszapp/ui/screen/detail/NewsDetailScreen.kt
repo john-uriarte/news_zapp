@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.example.newszapp.ui.screen.getDateTimeFromUTC
 import com.example.newszapp.ui.viewmodel.NewsDetailViewModel
@@ -17,7 +17,7 @@ import com.example.newszapp.ui.viewmodel.NewsDetailViewModel
 private const val TAG = "NewsDetailScreen"
 
 @Composable
-fun NewsDetailScreen(id: Int, vm: NewsDetailViewModel = viewModel()) {
+fun NewsDetailScreen(id: Int, vm: NewsDetailViewModel = hiltViewModel()) {
 
     vm.getNewsById(id)
     val news = vm.news.value

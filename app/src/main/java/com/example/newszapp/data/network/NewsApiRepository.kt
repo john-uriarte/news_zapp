@@ -2,10 +2,8 @@ package com.example.newszapp.data.network
 
 import android.util.Log
 import com.example.newszapp.data.News
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
 const val BASE_ENDPOINT_URL = "https://newsapi.org/v2/"
 const val NEWS_API_KEY = "cc4178e3a141442f810d794a54cf1c9c"
@@ -14,20 +12,9 @@ const val NEWS_ARTICLE_COUNTRY = "us"
 
 private const val TAG = "NewsApiRepository"
 
-class NewsApiRepository() {
-
-    private val retrofit: Retrofit by lazy {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-
-        Retrofit.Builder()
-            .baseUrl(BASE_ENDPOINT_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-    }
-
-    private val newsApi: NewsApi by lazy {
-        retrofit.create(NewsApi::class.java)
-    }
+@Singleton
+class NewsApiRepository @Inject constructor(
+    private val newsApi: NewsApi) {
 
     suspend fun getNews(): List<News> {
         Log.i(TAG,"getNews Start")

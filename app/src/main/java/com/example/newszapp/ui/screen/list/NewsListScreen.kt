@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.newszapp.R
 import com.example.newszapp.ui.viewmodel.NewsListViewModel
 
@@ -18,7 +18,7 @@ import com.example.newszapp.ui.viewmodel.NewsListViewModel
 private const val TAG = "NewsListScreen"
 
 @Composable
-fun NewsListScreen(vm: NewsListViewModel = viewModel(), onClick: (Int) -> Unit) {
+fun NewsListScreen(vm: NewsListViewModel = hiltViewModel(), onClick: (Int) -> Unit) {
     val newsList = vm.newsList.value
 
     Text(

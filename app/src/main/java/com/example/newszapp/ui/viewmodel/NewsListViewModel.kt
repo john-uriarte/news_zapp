@@ -1,40 +1,40 @@
 package com.example.newszapp.ui.viewmodel
 
-import android.app.Application
 import android.util.Log
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newszapp.data.News
-import com.example.newszapp.data.network.NewsApiRepository
 import com.example.newszapp.data.database.NewsDbRepository
+import com.example.newszapp.data.network.NewsApiRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-private const val TAG = "mainViewModel"
+private const val TAG = "NewsListViewModel"
 
-class NewsListViewModel (app: Application) : AndroidViewModel(app) {
-    private val _newsList: MutableState<List<News>> = mutableStateOf(emptyList())
-    val newsList: State<List<News>>
-        get() = _newsList
-
-    private val newsApiRepository = NewsApiRepository()
-    private val newsDbRepository = NewsDbRepository(app)
+@HiltViewModel
+class NewsListViewModel @Inject constructor(
+    private val newsApiRepository: NewsApiRepository,
+    private val newsDbRepository: NewsDbRepository
+) : ViewModel() {
+    var newsList: MutableState<List<News>> = mutableStateOf(emptyList())
+        private set
 
     init {
         Log.i(TAG, "init")
         getNewsList()
     }
 
-    fun getNewsList() {
+    private fun getNewsList() {
         viewModelScope.launch {
-            val newsList = newsApiRepository.getNews()
-            if (newsList.isNotEmpty()) {
+            val _newsList = newsApiRepository.getNews()
+            if (_newsList.isNotEmpty()) {
                 newsDbRepository.deleteAllNews()
-                newsDbRepository.storeNewsInDb(newsList)
+                newsDbRepository.storeNewsInDb(_newsList)
             }
-            _newsList.value = newsDbRepository.getAllNewsFromDb()
+            newsList.value = newsDbRepository.getAllNewsFromDb()
         }
     }
 }

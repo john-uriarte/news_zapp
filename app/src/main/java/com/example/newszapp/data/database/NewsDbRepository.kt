@@ -1,13 +1,15 @@
 package com.example.newszapp.data.database
 
-import android.app.Application
 import android.util.Log
 import com.example.newszapp.data.News
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val TAG = "NewsDbRepository"
-class NewsDbRepository(app: Application) {
-    private val newsDao = NewsDatabase.getDatabase(app)
-        .newsDao()
+@Singleton
+class NewsDbRepository @Inject constructor(
+    private val newsDao: NewsDao
+) {
 
     suspend fun storeNewsInDb(news: List<News>?) {
         if (news != null) {

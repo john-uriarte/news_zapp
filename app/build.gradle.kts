@@ -1,7 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+id("org.jetbrains.kotlin.kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -67,10 +69,15 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 
     //Navigation
     implementation ("androidx.navigation:navigation-compose:2.7.6")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.50")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
 
     //Room
     implementation("androidx.room:room-runtime:2.6.1")
@@ -93,4 +100,12 @@ dependencies {
     androidTestImplementation ("androidx.compose.ui:ui-test")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // For instrumentation tests
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.46.1")
+    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.46.1")
+}
+
+kapt {
+    correctErrorTypes = true
 }
