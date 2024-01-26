@@ -27,7 +27,7 @@ class NewsListViewModel @Inject constructor(
         getNewsList()
     }
 
-    private fun getNewsList() {
+    fun getNewsList() {
         viewModelScope.launch {
             val _newsList = newsApiRepository.getNews()
             if (_newsList.isNotEmpty()) {

@@ -3,7 +3,6 @@ package com.example.newszapp.ui.screen
 import android.content.Context
 import android.widget.Toast
 import com.example.newszapp.R
-import com.example.newszapp.data.News
 import java.text.SimpleDateFormat
 
 fun showToastNotImplemented(context: Context) {

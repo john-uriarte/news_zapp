@@ -5,10 +5,9 @@ import com.example.newszapp.data.News
 import javax.inject.Inject
 import javax.inject.Singleton
 
-const val BASE_ENDPOINT_URL = "https://newsapi.org/v2/"
-const val NEWS_API_KEY = "cc4178e3a141442f810d794a54cf1c9c"
-const val NEWS_ARTICLE_COUNT = 20
-const val NEWS_ARTICLE_COUNTRY = "us"
+private const val NEWS_API_KEY = "cc4178e3a141442f810d794a54cf1c9c"
+private const val NEWS_ARTICLE_COUNT = 20
+private const val NEWS_ARTICLE_COUNTRY = "us"
 
 private const val TAG = "NewsApiRepository"
 
