@@ -1,8 +1,8 @@
 # Android News Zapp with Compose
 
-A basic news app under development using Kotlin exhibiting usage of Jetpack Compose for the UI, Retrofit for HTTP, Room for SQLite DB, Coroutines for async processing, Hilt for dependency injection, navigation, unit testing and MVVM architecture
+A barebone news app under development using Kotlin exhibiting usage of Jetpack Compose for the UI, Retrofit for HTTP, Room for SQLite DB, Coroutines for async processing, Hilt for dependency injection, navigation, unit testing and MVVM architecture
 
-News data is being provided by https://newsapi.org/ apis
+News data is provided by https://newsapi.org/ apis
 
 MAIN SCREEN
 
