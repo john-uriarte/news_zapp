@@ -15,7 +15,6 @@ const val BASE_ENDPOINT_URL = "https://newsapi.org/v2/"
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
-
     @Singleton
     @Provides
     fun providesNewsApi(): NewsApi {
