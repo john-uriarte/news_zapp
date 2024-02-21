@@ -21,7 +21,8 @@ class NewsListViewModel @Inject constructor(
 ) : ViewModel() {
     var newsList: MutableState<List<News>> = mutableStateOf(emptyList())
         private set
-
+    var isLoading: MutableState<Boolean> = mutableStateOf(false)
+        private set
     init {
         Log.i(TAG, "init")
         getNewsList()
@@ -29,12 +30,15 @@ class NewsListViewModel @Inject constructor(
 
     fun getNewsList() {
         viewModelScope.launch {
+            isLoading.value = true
             val _newsList = newsApiRepository.getNews()
             if (_newsList.isNotEmpty()) {
                 newsDbRepository.deleteAllNews()
                 newsDbRepository.storeNewsInDb(_newsList)
             }
+
             newsList.value = newsDbRepository.getAllNewsFromDb()
+            isLoading.value = false
         }
     }
 }

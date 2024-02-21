@@ -24,6 +24,7 @@ import com.example.newszapp.ui.screen.showToastNotImplemented
 @Composable
 fun NewsBottomBar(
     context: Context,
+    isLoading: Boolean,
     destination: NavDestination?,
     getNewsList: () -> Unit
 ) {
@@ -41,7 +42,7 @@ fun NewsBottomBar(
             }
         },
         floatingActionButton = {
-            if (notStartScreen == false) {
+            if (notStartScreen == false && !isLoading) {
                 FloatingActionButton(
                     onClick = { getNewsList() },
                     containerColor = BottomAppBarDefaults.bottomAppBarFabColor,

@@ -36,7 +36,6 @@ fun NewsDetailScreen(
     id: Int,
     vm: NewsDetailViewModel = hiltViewModel()
 ) {
-
     vm.getNewsById(id)
     val news = vm.news.value
     Log.i(TAG, "news: $news")
@@ -50,11 +49,11 @@ fun NewsDetailScreen(
             NewsTopBar(
                 context,
                 currentBackStack?.destination,
-                scrollBehavior,
-                { navController.navigateUp() })
+                scrollBehavior
+            ) { navController.navigateUp() }
         },
         bottomBar = {
-            NewsBottomBar(context, currentBackStack?.destination, { })
+            NewsBottomBar(context, false, currentBackStack?.destination, { })
         }
     ) {
         Column(modifier = Modifier
