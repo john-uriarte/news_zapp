@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +38,7 @@ import com.example.newszapp.ui.viewmodel.NewsListViewModel
 
 private const val TAG = "NewsListScreen"
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 fun NewsListScreen(
     navController: NavHostController,
@@ -47,7 +51,7 @@ fun NewsListScreen(
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val context = LocalContext.current
     val currentBackStack by navController.currentBackStackEntryAsState()
-
+    val pullRefreshState = rememberPullRefreshState(isLoading, { vm.getNewsList() })
 
     Scaffold(
         topBar = {
@@ -61,14 +65,19 @@ fun NewsListScreen(
             NewsBottomBar(context, isLoading, currentBackStack?.destination) { vm.getNewsList() }
         }
     ) {
-        Column(modifier = Modifier.padding(it)) {
+        Column(
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize()
+                .pullRefresh(pullRefreshState)
+        ) {
             Text(
                 text = stringResource(R.string.headlines),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp)
             )
             if (isLoading) {
-                FullScreenLoading()
+                //FullScreenLoading()
             } else {
                 LazyColumn(
                     modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
@@ -86,6 +95,11 @@ fun NewsListScreen(
                     }
                 }
             }
+            PullRefreshIndicator(
+                refreshing = isLoading,
+                state = pullRefreshState,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
         }
     }
 }

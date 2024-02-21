@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.newszapp.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -66,6 +66,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
 
+    implementation ("androidx.compose.material:material:1.6.1")
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
