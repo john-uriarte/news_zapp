@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -37,7 +38,7 @@ import com.example.newszapp.ui.viewmodel.NewsListViewModel
 
 
 private const val TAG = "NewsListScreen"
-
+const val NEWS_LIST_TAG = "NewsListTag"
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 fun NewsListScreen(
@@ -80,7 +81,8 @@ fun NewsListScreen(
                 //FullScreenLoading()
             } else {
                 LazyColumn(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
+                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp)
+                        .testTag(NEWS_LIST_TAG),
                     state = scrollState
                 ) {
                     Log.i(TAG, "items: " + newsList.toString())
